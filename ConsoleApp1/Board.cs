@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -47,11 +47,41 @@ namespace ConsoleApp1
         {
             get
             {
-                return board[row, col];
+                try
+                {
+                    if (row < 0 || row >= height || col < 0 || col >= width)
+                    {
+                        throw new Exception("Wrong parameters");
+                    }
+                    else
+                    {
+                        return board[row, col];
+                    }
+                }
+                catch(Exception e)
+                {
+                    Console.WriteLine($"{e.Message}");
+                    return 0;
+                }
             }
             set
             {
                 board[row, col] = value;
+                try
+                {
+                    if (row < 0 || row >= height || col < 0 || col >= width)
+                    {
+                        throw new Exception("Wrong parameters");
+                    }
+                    else
+                    {
+                        board[row, col] = value;
+                    }
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine($"{e.Message}");
+                }
             }
         }
 
@@ -69,11 +99,6 @@ namespace ConsoleApp1
             {
                 throw new Exception("Wrong value for dimension");
             }
-        }
-
-        public void Clear()
-        {
-            board = new int[height, width];
         }
 
         public bool IsRowComplete(int row)
