@@ -66,7 +66,6 @@ namespace ConsoleApp1
             }
             set
             {
-                board[row, col] = value;
                 try
                 {
                     if (row < 0 || row >= height || col < 0 || col >= width)
